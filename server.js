@@ -7,6 +7,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -19,6 +20,7 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
@@ -30,13 +32,11 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-//require("./routes/user-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
+require("./routes/emotion-api-routes.js")(app);
 var routes = require("./routes/html-api-routes.js");
 
 app.use(routes);
-//require("./routes/emotion-api-routes.js")(app);
-
-
 
 
 // Syncing our sequelize models and then starting our Express app

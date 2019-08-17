@@ -2,10 +2,12 @@
 //var db = require("../models");
 var express = require("express");
 var router = express.Router();
+var emotion = require('emoji-emotion')
 
 router.get("/", function (req, res) {
     var data = {
-        apples: 'hello world!',
+        apples: emotion,
+
     };
     res.render('index', data);
 });
