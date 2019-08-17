@@ -15,8 +15,8 @@ module.exports = function(app) {
 
 
 
-  // GET route for getting all of the posts
-  app.get("/api/posts", function(req, res) {
+  // GET route for getting all of the emojis
+  app.get("/api/emojis", function(req, res) {
     var query = {};
     if (req.query.user_id) {
       query.UserId = req.query.user_id;
@@ -32,8 +32,8 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
+  // Get route for retrieving a single emoji
+  app.get("/api/emojis/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
@@ -47,15 +47,15 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for saving a new post
-  app.post("/api/posts", function(req, res) {
+  // POST route for saving a new emoji
+  app.post("/api/emojis", function(req, res) {
     db.Post.create(req.body).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
+  // DELETE route for deleting emojis
+  app.delete("/api/emojis/:id", function(req, res) {
     db.Post.destroy({
       where: {
         id: req.params.id
@@ -65,8 +65,8 @@ module.exports = function(app) {
     });
   });
 
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
+  // PUT route for updating emojis
+  app.put("/api/emojis", function(req, res) {
     db.Post.update(
       req.body,
       {

@@ -6,7 +6,7 @@ var emotion = require('emoji-emotion')
 
 router.get("/", function (req, res) {
     var data = {
-        apples: emotion
+        emojis: emotion
     };
     res.render('index', data);
 });
