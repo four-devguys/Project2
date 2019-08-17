@@ -1,12 +1,12 @@
 
 
-$(function(){
+// $(function(){
 
 
 
-    $(".test-btn").click(function(){
-        alert("The paragraph was clicked.");
-        $("#test").html();
-      });
+//     $(".test-btn").click(function(){
+//         alert("The paragraph was clicked.");
+//         $("#test").html();
+//       });
 
-});
+// });

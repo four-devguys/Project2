@@ -12,4 +12,12 @@ router.get("/", function (req, res) {
     res.render('index', data);
 });
 
+
+router.get("/chart", function (req, res) {
+    var data = {
+        
+    };
+    res.render('chart', data);
+});
+
 module.exports = router;
