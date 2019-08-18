@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     // A Emoji can't be created without an User due to the foreign key constraint
     emojis.belongsToMany(models.users, {
       through: 'user_emojis',
-      as: 'user_emojis',
+      as: 'umoji',
       foreignKey: 'emoji_id'
     });
   };

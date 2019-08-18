@@ -12,15 +12,55 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-
-  //  const user_ids = await queryInterface.sequelize.query(`SELECT id from users;`);
-  //  console.log(user_ids);
-  //  return false;
-
-  //  return queryInterface.bulkInsert('user-emojis', [{
-  //     user_id: user_id,
-  //     emoji_id: emoji_id
-  //   }], {});
+    return queryInterface.bulkInsert('user_emojis', [
+      {
+        user_id: 1,
+        emoji_id: 2
+      },
+      {
+        user_id: 1,
+        emoji_id: 3
+      },
+      {
+        user_id: 1,
+        emoji_id: 5
+      },
+      {
+        user_id: 2,
+        emoji_id: 2
+      },
+      {
+        user_id: 2,
+        emoji_id: 3
+      },
+      {
+        user_id: 2,
+        emoji_id: 5
+      },
+      {
+        user_id: 3,
+        emoji_id: 2
+      },
+      {
+        user_id: 3,
+        emoji_id: 3
+      },
+      {
+        user_id: 3,
+        emoji_id: 5
+      },{
+        user_id: 4,
+        emoji_id: 2
+      },
+      {
+        user_id: 4,
+        emoji_id: 3
+      },
+      {
+        user_id: 4,
+        emoji_id: 5
+      },
+  ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -31,6 +71,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-   return queryInterface.bulkDelete('user-emojis', null, {});
+   return queryInterface.bulkDelete('user_emojis', null, {});
   }
 };

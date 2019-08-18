@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     // When an User is deleted, also delete any associated Posts
     users.hasMany(models.emojis, {
       through: 'user_emojis',
-      as: 'user_emojis',
+      as: 'umoji',
       foreignKey: 'user_id'
     });
   };
