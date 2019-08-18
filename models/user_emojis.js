@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         model: 'emojis',
         key: 'id'
       }
+    },
+    user_comment: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {});
   user_emojis.associate = function(models) {

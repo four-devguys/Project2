@@ -1,6 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const emojis = sequelize.define('emojis', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     emoji: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -8,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         len: [1]
       }
     },
-    comment: {
+    polarity: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

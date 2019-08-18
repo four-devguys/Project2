@@ -18,17 +18,16 @@ module.exports = function(app) {
   // GET route for getting all of the emojis
   app.get("/api/emojis", function(req, res) {
     var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
+    if (req.query.id) {
+      query.id = req.query.id;
     }
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
-    db.Post.findAll({
+    db.emojis.findAll({
       where: query,
-      include: [db.User]
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    }).then(function(dbemoji) {
+      res.json(dbemoji);
     });
   });
 
@@ -37,31 +36,31 @@ module.exports = function(app) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
-    db.Post.findOne({
+    db.emojis.findOne({
       where: {
         id: req.params.id
-      },
-      include: [db.User]
-    }).then(function(dbPost) {
-      res.json(dbPost);
+      }
+    }).then(function(dbemojis) {
+      res.json(dbemojis);
     });
   });
 
+  /*
   // POST route for saving a new emoji
   app.post("/api/emojis", function(req, res) {
-    db.Post.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
+    db.emojis.create(req.body).then(function(dbemojis) {
+      res.json(dbemojis);
     });
   });
 
   // DELETE route for deleting emojis
   app.delete("/api/emojis/:id", function(req, res) {
-    db.Post.destroy({
+    db.emojis.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    }).then(function(dbemojis) {
+      res.json(dbemojis);
     });
   });
 
@@ -73,8 +72,8 @@ module.exports = function(app) {
         where: {
           id: req.body.id
         }
-      }).then(function(dbPost) {
-      res.json(dbPost);
+      }).then(function(dbemojis) {
+      res.json(dbemojis);
     });
-  });
+  });*/
 };
