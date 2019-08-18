@@ -22,7 +22,11 @@ module.exports = function(app) {
     db.users.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [{
+        model: db.emojis,
+        as: 'umoji'
+      }]
     }).then(function(dbusers) {
       res.json(dbusers);
     });
