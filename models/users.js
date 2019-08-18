@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     // Associating User with Posts
     // When an User is deleted, also delete any associated Posts
     users.hasMany(models.emojis, {
-      onDelete: "cascade"
+      through: 'user_emojis',
+      as: 'user_emojis',
+      foreignKey: 'user_id'
     });
   };
   return users;

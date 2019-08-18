@@ -20,10 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     // We're saying that a Emoji should belong to an User
     // A Emoji can't be created without an User due to the foreign key constraint
-    emojis.belongsTo(models.users, {
-      foreignKey: {
-        allowNull: false
-      }
+    emojis.belongsToMany(models.users, {
+      through: 'user_emojis',
+      as: 'user_emojis',
+      foreignKey: 'emoji_id'
     });
   };
   return emojis;

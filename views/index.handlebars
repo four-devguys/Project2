@@ -1,37 +1,54 @@
 <div class="container">
     <div class="jumbotron text-center display-4">
-      <i class="far fa-grin"></i>&nbsp;Emotion Tracker
+      <i class="far fa-grin"></i>&nbsp;{{title}}
     </div>
 
-    <div id="demo" class="carousel slide bg-dark" data-ride="carousel">
-
-    <!-- Indicators -->
-    <ul class="carousel-indicators">
-      <li data-target="#demo" data-slide-to="0" class="active"></li>
-      <li data-target="#demo" data-slide-to="1"></li>
-      <li data-target="#demo" data-slide-to="2"></li>
-    </ul>
-
-    <!-- The slideshow -->
-    <div class="carousel-inner text-center">
-      <div class="carousel-item active" data-toggle="modal" data-target="#myModal">
-        <img src="/assets/images/happy-face.webp" alt="Los Angeles" width="1100" height="500">
-      </div>
-
-      {{#each emojis}}
-        <div class="carousel-item emoji-size" data-toggle="modal" data-target="#myModal">
-          {{emoji}}
-        </div>
+    <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Tell us the precision of your happiness
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <ul>
+      {{#each positivePolarityEmojis}}
+        <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal">
+          {{name}} {{polarity}} {{emoji}}
+        </li>
       {{/each}}
-    </div>
+      </ul>
 
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-      <span class="carousel-control-prev-icon bg-dark p-4"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Tell us your feeling
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+
+      {{#each neutralPolarityEmojis}}
+        <button class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal">
+          {{name}} {{polarity}} {{emoji}}
+        </button>
+      {{/each}}
+
+
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Tell us the precision of your sadness
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <ul>
+      {{#each negativePolarityEmojis}}
+        <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal">
+          {{name}} {{polarity}} {{emoji}}
+        </li>
+      {{/each}}
+      </ul>
+
+    </div>
   </div>
 
 </div>
@@ -53,6 +70,7 @@
         <!-- Modal body -->
         <div class="modal-body">
           Modal body..
+           <div>{{this.emoji}}</div>
         </div>
 
         <!-- Modal footer -->
