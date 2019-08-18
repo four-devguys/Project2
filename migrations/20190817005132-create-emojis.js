@@ -8,10 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        type: Sequelize.STRING
+      },
       emoji: {
         type: Sequelize.STRING
       },
-      comment: {
+      polarity: {
         type: Sequelize.STRING
       },
       createdAt: {

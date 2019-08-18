@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     // Associating User with Posts
     // When an User is deleted, also delete any associated Posts
-    users.hasMany(models.emojis, {
+    users.belongsToMany(models.emojis, {
       through: 'user_emojis',
       as: 'umoji',
       foreignKey: 'user_id'

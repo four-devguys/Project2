@@ -14,6 +14,10 @@ module.exports = {
       emoji_id: {
         type: Sequelize.INTEGER
       },
+      user_comment: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
