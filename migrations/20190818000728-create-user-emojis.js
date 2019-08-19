@@ -1,21 +1,22 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('emojis', {
+    return queryInterface.createTable('user_emojis', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      user_id: {
+        type: Sequelize.INTEGER
       },
-      emoji: {
-        type: Sequelize.STRING
+      emoji_id: {
+        type: Sequelize.INTEGER
       },
-      polarity: {
-        type: Sequelize.STRING
+      user_comment: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('emojis');
+    return queryInterface.dropTable('user_emojis');
   }
 };
