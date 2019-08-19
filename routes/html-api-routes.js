@@ -45,4 +45,12 @@ router.get("/", function(req, res) {
   });
 });
 
+
+router.get("/chart", function (req, res) {
+    var data = {
+        
+    };
+    res.render('chart', data);
+});
+
 module.exports = router;
