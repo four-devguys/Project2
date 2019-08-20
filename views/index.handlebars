@@ -1,61 +1,91 @@
-<div class="container">
-    <div class="jumbotron text-center display-4">
+<!-- header -->
+<nav class="header-container">
+  <span id="logo" class="navbar-brand mb-0 h1">
       <i class="far fa-grin"></i>&nbsp;{{title}}
+  </span>
+</nav>
+
+<div class="container page-container">
+    
+    <!-- front window container -->
+    <div class="container front-window">
+      <h1>How are you feeling today ?</h1>
+      <!-- button for happy -->
+      <button type="button" class="btn btn-outline-primary" id="happy-btn">Happy</button>
+
+      <!-- button for neutral -->
+      <button type="button" class="btn btn-outline-primary" id="neutral-btn">Neutral</button>
+
+      <!-- button for sad -->
+      <button type="button" class="btn btn-outline-primary" id="sad-btn">Sad</button>
     </div>
 
-    <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      Tell us the precision of your happiness
-    </button>
-    <div class="dropdown-menu dropdown-menu-right">
-      <ul>
-      {{#each positivePolarityEmojis}}
-        <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal">
-          {{name}} {{polarity}} {{emoji}}
-        </li>
-      {{/each}}
-      </ul>
 
+    <!-- emojis container -->
+    <div class="container" id="happy-emoji-container">
+      <button class="back-button"><i class="fas fa-arrow-left"></i></button><br>
+        {{!-- <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Tell us the precision of your happiness
+        </button>
+        <div class="dropdown-menu dropdown-menu-right"> --}}
+          {{!-- <ul> --}}
+          {{#each positivePolarityEmojis}}
+            {{!-- <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
+              <span>{{emoji}}</span>
+               {{!-- {{name}} {{polarity}} --}}
+            {{!-- </li> --}}
+          {{/each}}
+          {{!-- </ul> --}}
+{{!-- 
+        </div>
+      </div> --}}
     </div>
-  </div>
 
-  <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+
+  <div class="container" id="neutral-emoji-container">
+    <button class="back-button"><i class="fas fa-arrow-left"></i></button><br>
+    {{!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
       Tell us your feeling
     </button>
-    <div class="dropdown-menu dropdown-menu-right">
+    <div class="dropdown-menu dropdown-menu-right"> --}}
 
       {{#each neutralPolarityEmojis}}
-        <button class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal">
-          {{name}} {{polarity}} {{emoji}}
-        </button>
+        {{!-- <button class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
+          <span>{{emoji}}</span>
+          {{!-- {{name}} {{polarity}}  --}}
+        {{!-- </button> --}}
       {{/each}}
 
 
-    </div>
+    {{!-- </div> --}}
   </div>
 
-  <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+  
+  <div class="container" id="sad-emoji-container">
+    <button class="back-button"><i class="fas fa-arrow-left"></i></button><br>
+    {{!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
       Tell us the precision of your sadness
     </button>
     <div class="dropdown-menu dropdown-menu-right">
-      <ul>
+      <ul> --}}
       {{#each negativePolarityEmojis}}
-        <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal">
-          {{name}} {{polarity}} {{emoji}}
-        </li>
+        {{!-- <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
+          <span>{{emoji}}</span>
+          {{!-- {{name}} {{polarity}}  --}}
+        {{!-- </li> --}}
       {{/each}}
-      </ul>
+      {{!-- </ul>
 
-    </div>
+    </div> --}}
   </div>
-
 
 </div>
 
+
+
 <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+  {{!-- <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -78,4 +108,4 @@
 
       </div>
     </div>
-  </div>
+  </div> --}}
