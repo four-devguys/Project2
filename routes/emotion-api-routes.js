@@ -30,7 +30,6 @@ module.exports = function(app) {
         title: "Emotion Tracker"
       }
       res.json(dbemoji);
-      res.render("index",data)
     });
   });
 
