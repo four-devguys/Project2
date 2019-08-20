@@ -1,5 +1,4 @@
 'use strict';
-// import mysql2 from 'mysql2';
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -13,20 +12,6 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-   var emotions = require('emoji-emotion');
-
-   var emojis = [];
-   emotions.forEach(function(emotion) {
-    emojis.push({
-      name: emotion.name,
-      emoji: emotion.emoji,
-      polarity: emotion.polarity,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    });
-   });
-
-   return queryInterface.bulkInsert('emojis', emojis, {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -37,6 +22,5 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-   return queryInterface.bulkDelete('emojis', null, {});
   }
 };
