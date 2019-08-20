@@ -22,19 +22,16 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chart.js": "^2.8.0",
+    "db-migrate": "^0.11.6",
+    "db-migrate-mysql": "^1.1.10",
     "emoji-emotion": "^2.1.2",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
-<<<<<<< HEAD
-    "sequelize": "^6.0.0",
-    "sequelize-cli": "^5.5.0"
-=======
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.23.0"
->>>>>>> f82ca34bc06267820ca7d51fdf4d61ce51adfe13
+    "sequelize": "^4.44.3"
   }
 }

@@ -12,7 +12,13 @@ $(document).ready(function() {
       password: passwordInput.val().trim()
     };
 
-    if (!userData.username || !userData.password) {
+    if (!userData.username ) {
+      // alert( "please fill out your username!" );
+      emailInput.focus();
+      return;
+
+    } else if( !userData.password) {
+      // alert ( "please fill out your password!" )
       return;
     }
 
@@ -36,4 +42,14 @@ $(document).ready(function() {
         console.log(err);
       });
   }
+  // function validateForm(){
+  //   var x = document.forms["form.login"]["input#email-input"].value;
+  //   if (x == "") {
+  //     alert ("E-mail must be filled out");
+  //     return false;
+  //   }
+  // }
+  // function validatepass(){
+  //   var y = document.forms["from.login"]
+  // }
 });
