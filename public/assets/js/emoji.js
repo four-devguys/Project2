@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 
   function getUsers() {
@@ -23,5 +24,7 @@ $(document).ready(function(){
   getUsers();
 
 
+
+$(function(){
 
 });
