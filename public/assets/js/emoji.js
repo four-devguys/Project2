@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-  function getAuthors() {
+  function getUsers() {
     $.get("/api/users", function(data) {
       // console.log(data[0].id)
       // console.log(data[0].umoji[0].user_emojis.user_id)
@@ -14,13 +14,13 @@ $(document).ready(function(){
       //   }
       // }
 
-      console.log(data[0].umoji[0].polarity)
-      console.log(data[0].umoji[1].polarity)
-      console.log(data[0].umoji[2].polarity)
+      // console.log(data[0].umoji[0].polarity)
+      // console.log(data[0].umoji[1].polarity)
+      // console.log(data[0].umoji[2].polarity)
     });
   }
 
-  getAuthors();
+  getUsers();
 
 
 
