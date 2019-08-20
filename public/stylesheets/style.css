@@ -1,3 +1,28 @@
+html, body{
+  background-color: #A1CDF1;
+  color: #FFFFFF;
+}
+h2{
+  color: #FFFFFF;
+  text-align: center;
+}
+.col-md-6{
+  background-color: #102542;
+  padding: 2% 50px;
+  box-shadow: 0px 0px 20px #102542;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.btn-default{
+  display: block;
+  margin-left: auto;
+  width: 25%;
+}
+p{
+  text-align: center;
+}
 form.signup,
 form.login {
   margin-top: 50px;
