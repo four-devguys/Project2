@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 
   function getAuthors() {
@@ -23,5 +24,7 @@ $(document).ready(function(){
   getAuthors();
 
 
+
+$(function(){
 
 });
