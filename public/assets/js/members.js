@@ -6,4 +6,8 @@ $(document).ready(function() {
     $(".member-name").text(data.username.substr(0, data.username.indexOf("@"))
     .toUpperCase());
   });
+
+  $('#start-btn').click(() => {
+    window.location.assign('/mood-track');
+  });
 });

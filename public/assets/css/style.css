@@ -1,33 +1,16 @@
-body{
-    padding: 0%;
-    margin: 0%;
-    background-color: #FFFFFF;
+html, body{
+  background: #2980B9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
+  width: 100%;
 }
-.carousel-inner img {
-    width: 30%;
-    height: 30%;
+.bg-light{
+    background-color: transparent !important;
 }
-/* header */
-.header-container{
-    background-color: #A1CDF1;
-    color: #102542;
-    padding: 1.5%;
-    /* font-size: 1.2em; */
-    width: 100%;
-}
-#logo{
-    background-color: #102542;
-    color: #FFFFFF;
-    padding: 15px;
-    border-radius: 5px;
-}
-.fa-grin{
-    color: #A1CDF1;
-    margin-right: 5px;
-}
-.navbar-text{
-    margin-left: 15px;
-}
+h4{
+    margin-right: 2%;
+  }
 .page-container{
     position: absolute;
     top: 20%;

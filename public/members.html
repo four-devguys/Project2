@@ -23,7 +23,7 @@
 
   
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <h4>Welcome <span class="member-name"></span></h4>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,28 +33,20 @@
           <li class="nav-item active">
             <a class="nav-link" href="/members">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/index">Features</a>
-          </li>
         </ul>
         <a class="nav-link logout-link" href="/logout"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </nav>
-<!-- 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        
-      </div>
+
+    <!-- home content -->
+    <div class="container-fluid  home-content-container">
+        <div class="container-fluid home-content-background"></div>
+    
+        <div class="container home-content">
+          <h1>How are you feeling today?</h1>
+            <button type="button" class="btn btn-outline-primary start-btn" id="start-btn">Let's Start Tracking</button>
+        </div>
     </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        
-      </div>
-    </div>
-  </div> -->
 
 
   <!-- bootstrap js -->
