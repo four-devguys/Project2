@@ -1,4 +1,5 @@
 'use strict';
+// import mysql2 from 'mysql2';
 
 module.exports = {
   up: (queryInterface, Sequelize) => {

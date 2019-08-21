@@ -6,138 +6,300 @@ var path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
-function findAllEmojis(){
-// GET route for getting all of the emojis
-app.get("/", function(req, res) {
-  var query = {};
-if (req.query.id) {
-  query.id = req.query.id;
-}
+module.exports = function(app){
 
-db.emojis.findAll({
-  where: query,
-}).then(function(dbemoji) {
-  var sortedEmotion = dbemoji.sort(function(a, b){
-    return a.polarity-b.polarity
-})
-
-var positivePolarity = [];
-var neutralPolarity =[];
-var negativePolarity = [];
-
-
-for(var i = 0; i < sortedEmotion.length; i++){
-    var emojiPolarity = sortedEmotion[i].polarity;
-    if(emojiPolarity > 0){
-        positivePolarity.push(dbemoji[i]);
-    }else if(emojiPolarity == 0){
-        neutralPolarity.push(dbemoji[i]);
-    }else{
-        negativePolarity.push(dbemoji[i]);
-    }
-}
-var data = {
-    positivePolarityEmojis: positivePolarity,
-    neutralPolarityEmojis: neutralPolarity,
-    negativePolarityEmojis: negativePolarity,
-    title: "Emotion Tracker"
-};
-
-  res.render("index",data)
-  });
-});
-}
-findAllEmojis();
-
-console.log();
-function findUserEmoji(){
-  app.get("/", function(req, res) {
-
-    db.users.findAll({
-      include: [{
-        model: db.emojis,
-        as: 'umoji'
-      }]
-    }).then(function(dbusers) {
-
-      var data = {
-         Emojis: dbusers,
-        // neutralPolarityEmojis: neutralPolarity,
-        // negativePolarityEmojis: negativePolarity,
-        // title: "Emotion Tracker"
-
-    };
-      res.render("index", data);
-    });
-    });
-  }
-  findUserEmoji()
-
-
-  app.get("/", function(req, res) {
+  app.get("/", function(req, res){
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
+      if (req.user) {
+        res.redirect("/members");
+      }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  app.get("/login", function(req, res) {
+  app.get("/login", function(req, res){
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
+      if (req.user) {
+        res.redirect("/members");
+      }
+    res.sendFile(path.join(__dirname, "../public/login.html"))
+  });
+
+  app.get("/members", isAuthenticated, function(req, res){
+    res.sendFile(path.join(__dirname, "../public/members.html"))
+  });
+
+  app.get("/chart", function(req, res){
+    res.sendFile(path.join(__dirname, "../public/chart.html"))
+  })
+
+
+  function findAllEmojis(){
+    // GET route for getting all of the emojis
+    app.get("/mood-track", function(req, res) {
+      var query = {};
+    if (req.query.id) {
+      query.id = req.query.id;
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
-  });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
-  });
-}
+    db.emojis.findAll({
+      where: query,
+    }).then(function(dbemoji) {
+      var sortedEmotion = dbemoji.sort(function(a, b){
+        return a.polarity-b.polarity
+    })
+
+    var positivePolarity = [];
+    var neutralPolarity =[];
+    var negativePolarity = [];
+
+
+    for(var i = 0; i < sortedEmotion.length; i++){
+        var emojiPolarity = sortedEmotion[i].polarity;
+        if(emojiPolarity > 0){
+            positivePolarity.push(dbemoji[i]);
+        }else if(emojiPolarity == 0){
+            neutralPolarity.push(dbemoji[i]);
+        }else{
+            negativePolarity.push(dbemoji[i]);
+        }
+    }
+    var data = {
+        positivePolarityEmojis: positivePolarity,
+        neutralPolarityEmojis: neutralPolarity,
+        negativePolarityEmojis: negativePolarity,
+        title: "Emotion Tracker"
+    };
+
+      res.render("index",data)
+      });
+    });
+    }
+    findAllEmojis();
+
+    console.log();
+    function findUserEmoji(){
+      app.get("/mood-track", function(req, res) {
+
+        db.users.findAll({
+          include: [{
+            model: db.emojis,
+            as: 'umoji'
+          }]
+        }).then(function(dbusers) {
+
+          var data = {
+             Emojis: dbusers,
+            // neutralPolarityEmojis: neutralPolarity,
+            // negativePolarityEmojis: negativePolarity,
+            // title: "Emotion Tracker"
+
+        };
+          res.render("index", data);
+        });
+        });
+      }
+      findUserEmoji()
+
+}; //end of module.exports
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var db = require("../models");
+
+// // Requiring path to so we can use relative routes to our HTML files
+// var path = require("path");
+
+// // Requiring our custom middleware for checking if a user is logged in
+// var isAuthenticated = require("../config/middleware/isAuthenticated");
+
+// module.exports = function(app) {
+// function findAllEmojis(){
 // // GET route for getting all of the emojis
-// router.get("/", function(req, res) {
+// app.get("/", function(req, res) {
 //   var query = {};
-//   if (req.query.id) {
-//     query.id = req.query.id;
-//   }
+// if (req.query.id) {
+//   query.id = req.query.id;
+// }
 
-//   db.emojis.findAll({
-//     where: query,
-//   }).then(function(dbemoji) {
-//     var sortedEmotion = dbemoji.sort(function(a, b){
-//       return a.polarity-b.polarity
-//   })
+// db.emojis.findAll({
+//   where: query,
+// }).then(function(dbemoji) {
+//   var sortedEmotion = dbemoji.sort(function(a, b){
+//     return a.polarity-b.polarity
+// })
 
-//   var positivePolarity = [];
-//   var neutralPolarity =[];
-//   var negativePolarity = [];
+// var positivePolarity = [];
+// var neutralPolarity =[];
+// var negativePolarity = [];
 
 
-//   for(var i = 0; i < sortedEmotion.length; i++){
-//       var emojiPolarity = sortedEmotion[i].polarity;
-//       if(emojiPolarity > 0){
-//           positivePolarity.push(dbemoji[i]);
-//       }else if(emojiPolarity == 0){
-//           neutralPolarity.push(dbemoji[i]);
-//       }else{
-//           negativePolarity.push(dbemoji[i]);
-//       }
-//   }
-//   var data = {
-//       positivePolarityEmojis: positivePolarity,
-//       neutralPolarityEmojis: neutralPolarity,
-//       negativePolarityEmojis: negativePolarity,
-//       title: "Emotion Tracker"
-//   };
+// for(var i = 0; i < sortedEmotion.length; i++){
+//     var emojiPolarity = sortedEmotion[i].polarity;
+//     if(emojiPolarity > 0){
+//         positivePolarity.push(dbemoji[i]);
+//     }else if(emojiPolarity == 0){
+//         neutralPolarity.push(dbemoji[i]);
+//     }else{
+//         negativePolarity.push(dbemoji[i]);
+//     }
+// }
+// var data = {
+//     positivePolarityEmojis: positivePolarity,
+//     neutralPolarityEmojis: neutralPolarity,
+//     negativePolarityEmojis: negativePolarity,
+//     title: "Emotion Tracker"
+// };
 
-//     res.render("index",data)
+//   res.render("login",data)
 //   });
 // });
+// }
+// findAllEmojis();
+
+// console.log();
+// function findUserEmoji(){
+//   app.get("/", function(req, res) {
+
+//     db.users.findAll({
+//       include: [{
+//         model: db.emojis,
+//         as: 'umoji'
+//       }]
+//     }).then(function(dbusers) {
+
+//       var data = {
+//          Emojis: dbusers,
+//         // neutralPolarityEmojis: neutralPolarity,
+//         // negativePolarityEmojis: negativePolarity,
+//         // title: "Emotion Tracker"
+
+//     };
+//       res.render("index", data);
+//     });
+//     });
+//   }
+//   findUserEmoji()
 
 
+//   app.get("/", function(req, res) {
+//     // If the user already has an account send them to the members page
+//     if (req.user) {
+//       res.redirect("/members");
+//     }
+//     res.sendFile(path.join(__dirname, "../public/signup.html"));
+//   });
+
+//   app.get("/login", function(req, res) {
+//     // If the user already has an account send them to the members page
+//     if (req.user) {
+//       res.redirect("/members");
+//     }
+//     res.sendFile(path.join(__dirname, "../public/login.html"));
+//   });
+
+//   // Here we've add our isAuthenticated middleware to this route.
+//   // If a user who is not logged in tries to access this route they will be redirected to the signup page
+//   app.get("/members", isAuthenticated, function(req, res) {
+//     res.sendFile(path.join(__dirname, "../public/members.html"));
+//   });
+// }
+
+
+
+// // // GET route for getting all of the emojis
+// // router.get("/", function(req, res) {
+// //   var query = {};
+// //   if (req.query.id) {
+// //     query.id = req.query.id;
+// //   }
+
+// //   db.emojis.findAll({
+// //     where: query,
+// //   }).then(function(dbemoji) {
+// //     var sortedEmotion = dbemoji.sort(function(a, b){
+// //       return a.polarity-b.polarity
+// //   })
+
+// //   var positivePolarity = [];
+// //   var neutralPolarity =[];
+// //   var negativePolarity = [];
+
+
+// //   for(var i = 0; i < sortedEmotion.length; i++){
+// //       var emojiPolarity = sortedEmotion[i].polarity;
+// //       if(emojiPolarity > 0){
+// //           positivePolarity.push(dbemoji[i]);
+// //       }else if(emojiPolarity == 0){
+// //           neutralPolarity.push(dbemoji[i]);
+// //       }else{
+// //           negativePolarity.push(dbemoji[i]);
+// //       }
+// //   }
+// //   var data = {
+// //       positivePolarityEmojis: positivePolarity,
+// //       neutralPolarityEmojis: neutralPolarity,
+// //       negativePolarityEmojis: negativePolarity,
+// //       title: "Emotion Tracker"
+// //   };
+
+// //     res.render("index",data)
+// //   });
+// // });
