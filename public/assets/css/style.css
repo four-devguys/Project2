@@ -32,7 +32,7 @@ h5{
 .front-window button{
     /* display: inline-flex; */
     margin: 10px 1.5%;
-    width: 15%;
+    /* width: 15%; */
 }
 #happy-emoji-container, #neutral-emoji-container, #sad-emoji-container{
     height: 50vh;
@@ -95,7 +95,10 @@ h5{
     border-radius: 50%;
 }
 @media screen and (max-width: 600px) {
-    button{
-        display: block;
+    .btn{
+        display: block !important;
+    }
+    .emoBtn{
+        a
     }
     }
