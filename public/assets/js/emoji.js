@@ -97,15 +97,59 @@ $(document).ready(function(){
   $('.modal').fadeOut(600);
   });
 
-  $('#confirm-btn').click(() => {
+  $('#confirm-btn').click((e) => {
     $('#close-btn').hide();
     $('.modal-title').text("You just clicked " + emoji);
     $('.modal-body').html('<form>' +
-    '<div class="form-group"><div class="form-group">' + 
+    '<div class="form-group">' + 
       '<label for="exampleFormControlTextarea1">Write down what happened:</label>' +
       '<textarea class="form-control" id="comment" rows="5"></textarea>' +
-    '</div>');
-    $('#confirm-btn').html('<i class="far fa-paper-plane"></i> Submit');
-  });
+    '</div></form>');
+    
+    
+    var userId;
+
+        $.get("/api/user_data").then((data) => {
+            userId = data.id
+        });
+
+        var id = $(e.target).attr("data-id");
+        var name = $(e.target).attr("data-name");
+        var emoji = $(e.target).text();
+        var polarity = $(e.target).attr("data-polarity");
+
+        var emojiInfo = {
+            userId : userId,
+                id : id,
+              name : name,
+             emoji : emoji,
+          polarity : polarity
+        }
+
+        $.ajax({
+            type: "GET",
+            data: emojiInfo
+        }).then(() => {
+                console.log(userId, name, emoji, id, polarity);
+                $('.modal').show();
+                $('p').text(emoji);
+
+                $.post("/api/useremojis", {
+                    user_id  : userId,
+                    emoji_id : id,
+                    user_comment: "Hi, how are you?"
+                },
+                function(data, status){
+                    console.log("DATA:" + data + "\nSTATUS: " + status);
+                }
+                )
+            }
+        );
+    });
+
+  
+
+  
+  
 
 });
