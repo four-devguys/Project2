@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 
 $(document).ready(function(){
@@ -59,6 +60,5 @@ $(document).ready(function(){
       $('#neutral-emoji-container').hide();
       $('#sad-emoji-container').hide();
   }); 
-
-
+  
 });
