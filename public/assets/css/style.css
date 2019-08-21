@@ -13,9 +13,10 @@ h4{
   }
 .page-container{
     position: absolute;
-    top: 20%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -50%);
+    height: 80%;
 }
 
 /* first window css */
@@ -32,23 +33,26 @@ h4{
 #happy-emoji-container, #neutral-emoji-container, #sad-emoji-container{
     height: 50vh;
     width: 100%;
-    background-color: #A1CDF1;
     display: none;
+    margin-top: 5%;
+    border-top: 2px solid #102542; 
+    /* background-color: #6DD5FA; */
 }
 #happy-emoji-container span, #neutral-emoji-container span,  #sad-emoji-container span{
     font-size: 2em;
 }
-.back-button{
+.x-button{
     border: none;
-    padding: 10px 20px;
-    font-size: 22pt;
+    padding: 15px; 
+    font-size: 18pt;
     border-radius: 50px;
-    color: white;
-    margin: 10px auto;
-    background-color: #102542;
+    color: #102542;
+    display: block;
+    margin-left: auto;
+    background-color: transparent;
     outline: none !important;
     box-shadow: none;
 }
-.back-button:hover{
+.x-button:hover{
     text-shadow: 0px 0px 5px #A1CDF1;
 }

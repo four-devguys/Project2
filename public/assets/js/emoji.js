@@ -33,45 +33,27 @@ $(document).ready(function(){
 
   //happy button function
   $('#happy-btn').click(function() {
-      $('.front-window').hide();
-      $('#happy-emoji-container').show();
-      $("#happy-emoji-container").css({
-          "display" : "block",
-          "position" : "absolute",
-          "top" : "50px",
-          "left" : "50px",
-          "transform" : "translate(-50px, -50px)"
-      });
+    $('#happy-emoji-container').show();
+    $('#neutral-emoji-container').hide();
+    $('#sad-emoji-container').hide();
   });
 
   //neutral button container
   $('#neutral-btn').click(function() {
-      $('.front-window').hide();
-      $('#neutral-emoji-container').show();
-      $("#neutral-emoji-container").css({
-          "display" : "block",
-          "position" : "absolute",
-          "top" : "50px",
-          "left" : "50px",
-          "transform" : "translate(-50px, -50px)"
-      });
+    $('#neutral-emoji-container').show();
+    $('#happy-emoji-container').hide();
+    $('#sad-emoji-container').hide();
   });
 
   //sad button container
   $('#sad-btn').click(function() {
-      $('.front-window').hide();
-      $('#sad-emoji-container').show();
-      $("#sad-emoji-container").css({
-          "display" : "block",
-          "position" : "absolute",
-          "top" : "50px",
-          "left" : "50px",
-          "transform" : "translate(-50px, -50px)"
-      });
+    $('#sad-emoji-container').show();
+    $('#happy-emoji-container').hide();
+    $('#neutral-emoji-container').hide();
   });
 
   // back button
-  $('.back-button').click(() => {
+  $('.x-button').click(() => {
       $('.front-window').show();
       $('#happy-emoji-container').hide();
       $('#neutral-emoji-container').hide();
