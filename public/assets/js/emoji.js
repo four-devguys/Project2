@@ -63,13 +63,15 @@ $(document).ready(function(){
   
   //hides the modal by default
   $('.modal').hide();
+  //setting a global variable
+  var id, name, emoji, emojiInfo;
   //if the user clicks on the emoji, a modal will appear with its info   
   $(".emoji-info").click((e) => {
     // var id = $(".emoji-info").attr("data-id");
-    var id = $(e.target).attr("data-id");
-    var name = $(e.target).attr("data-name");
-    var emoji = $(e.target).text();
-    var emojiInfo = {
+     id = $(e.target).attr("data-id");
+     name = $(e.target).attr("data-name");
+     emoji = $(e.target).text();
+     emojiInfo = {
         id: id,
         name: name,
         emoji: emoji
@@ -82,13 +84,25 @@ $(document).ready(function(){
         // console.log(name, emoji, id)
         $('.modal').show();
         $('p').text(emoji);
-
+        $('#confirm-btn').text('Confirm');
     });
-  })
+
+  });
 
   //close button for the modal
-  $('#close-btn').click(function(){
+  $('#close-btn').click(() => {
       $('.modal').hide();
-  })
+  });
+
+  $('#confirm-btn').click(() => {
+    $('#close-btn').hide();
+    $('.modal-title').text("You just clicked " + emoji);
+    $('.modal-body').html('<form>' +
+    '<div class="form-group"><div class="form-group">' + 
+      '<label for="exampleFormControlTextarea1">Write down what happened:</label>' +
+      '<textarea class="form-control" id="comment" rows="5"></textarea>' +
+    '</div>');
+    $('#confirm-btn').html('<i class="far fa-paper-plane"></i> Submit');
+  });
 
 });

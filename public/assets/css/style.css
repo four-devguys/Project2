@@ -10,7 +10,10 @@ html, body{
 }
 h4{
     margin-right: 2%;
-  }
+}
+h5{
+    text-align: center;
+}
 .page-container{
     position: absolute;
     top: 50%;
@@ -34,7 +37,7 @@ h4{
     height: 50vh;
     width: 100%;
     display: none;
-    margin-top: 5%;
+    margin-top: 2%;
     border-top: 2px solid #102542; 
     /* background-color: #6DD5FA; */
 }
@@ -61,4 +64,7 @@ h4{
 #emoji-icon{
     font-size: 3em;
     text-align: center;
+}
+#comment{
+    resize: none;
 }
