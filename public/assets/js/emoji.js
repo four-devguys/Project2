@@ -61,4 +61,34 @@ $(document).ready(function(){
       $('#sad-emoji-container').hide();
   }); 
   
+  //hides the modal by default
+  $('.modal').hide();
+  //if the user clicks on the emoji, a modal will appear with its info   
+  $(".emoji-info").click((e) => {
+    // var id = $(".emoji-info").attr("data-id");
+    var id = $(e.target).attr("data-id");
+    var name = $(e.target).attr("data-name");
+    var emoji = $(e.target).text();
+    var emojiInfo = {
+        id: id,
+        name: name,
+        emoji: emoji
+    }
+    $.ajax({
+        type: "GET",
+        data: emojiInfo
+    })
+    .then(function(){
+        // console.log(name, emoji, id)
+        $('.modal').show();
+        $('p').text(emoji);
+
+    });
+  })
+
+  //close button for the modal
+  $('#close-btn').click(function(){
+      $('.modal').hide();
+  })
+
 });

@@ -47,7 +47,7 @@
           {{!-- <ul> --}}
           {{#each positivePolarityEmojis}}
             {{!-- <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
-              <span>{{emoji}}</span>
+              <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
                {{!-- {{name}} {{polarity}} --}}
             {{!-- </li> --}}
           {{/each}}
@@ -67,7 +67,7 @@
 
       {{#each neutralPolarityEmojis}}
         {{!-- <button class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
-          <span>{{emoji}}</span>
+          <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
           {{!-- {{name}} {{polarity}}  --}}
         {{!-- </button> --}}
       {{/each}}
@@ -86,9 +86,9 @@
       <ul> --}}
       {{#each negativePolarityEmojis}}
         {{!-- <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
-          <span>{{emoji}}</span>
+          <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
           {{!-- {{name}} {{polarity}}  --}}
-        {{!-- </li> --}}
+        {{!-- </li> --}}  
       {{/each}}
       {{!-- </ul>
 
@@ -99,6 +99,26 @@
 
 
 <!-- The Modal -->
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Are you sure with this emoji?</h5>
+      </div>
+      <div class="modal-body">
+        <p id="emoji-icon"></p>
+      </div>
+      <div class="modal-footer">
+        <!-- close button -->
+        <button type="button" id="close-btn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- function for this button is still in need -->
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   {{!-- <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -123,3 +143,5 @@
       </div>
     </div>
   </div> --}}
+
+  
