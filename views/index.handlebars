@@ -50,7 +50,7 @@
      
 
     <!-- emojis container -->
-    <div class="containerE" id="happy-emoji-container">
+    <div class="containerE overflow-auto" id="happy-emoji-container">
       <button class="x-button"><i class="fas fa-times"></i></button><br>
         {{#each positivePolarityEmojis}}
             <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
@@ -58,7 +58,7 @@
     </div>
 
 
-    <div class="containerE" id="neutral-emoji-container">
+    <div class="containerE overflow-auto" id="neutral-emoji-container">
       <button class="x-button"><i class="fas fa-times"></i></button><br>
         {{#each neutralPolarityEmojis}}
             <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
@@ -66,7 +66,7 @@
     </div>
 
   
-  <div class="containerE" id="sad-emoji-container">
+  <div class="containerE overflow-auto" id="sad-emoji-container">
     <button class="x-button"><i class="fas fa-times"></i></button><br>
       {{#each negativePolarityEmojis}}
           <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
