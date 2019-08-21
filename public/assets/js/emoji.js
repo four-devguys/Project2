@@ -82,7 +82,9 @@ $(document).ready(function(){
     })
     .then(function(){
         // console.log(name, emoji, id)
-        $('.modal').show();
+
+       // to fade in (show) the modal in 1 sec
+        $('.modal').fadeIn(1000);
         $('p').text(emoji);
         $('#confirm-btn').text('Confirm');
     });
@@ -91,7 +93,8 @@ $(document).ready(function(){
 
   //close button for the modal
   $('#close-btn').click(() => {
-      $('.modal').hide();
+    // to fade out (hide) the modal in 0.6 sec
+  $('.modal').fadeOut(600);
   });
 
   $('#confirm-btn').click(() => {

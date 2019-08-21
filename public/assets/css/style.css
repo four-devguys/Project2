@@ -68,3 +68,17 @@ h5{
 #comment{
     resize: none;
 }
+/* to make the modal ovarlay */
+.modal{
+    background-color: rgb(0,0,0,0.5);
+}
+/* .modal{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+.modal{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+} */
