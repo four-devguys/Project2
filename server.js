@@ -46,6 +46,7 @@ require("./routes/emotion-api-routes.js")(app);
 require("./routes/html-api-routes.js")(app);
 require("./routes/user-emoji-api-routes.js")(app);
 
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize
