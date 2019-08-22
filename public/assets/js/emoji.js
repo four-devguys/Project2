@@ -64,7 +64,7 @@ $(document).ready(function(){
   //hides the modal by default
   $('.modal').hide();
   //setting a global variable
-  var id, name, emoji, emojiInfo;
+  var id, name, emoji, emojiInfo, polarity;
   //if the user clicks on the emoji, a modal will appear with its info   
   $(".emoji-info").click((e) => {
     // var id = $(".emoji-info").attr("data-id");
@@ -97,7 +97,7 @@ $(document).ready(function(){
   $('.modal').fadeOut(600);
   });
 
-  $('#confirm-btn').click((e) => {
+  $('#confirm-btn').click(() => {
     $('#close-btn').hide();
     $('.modal-title').text("You just clicked " + emoji);
     $('.modal-body').html('<form>' +
@@ -105,51 +105,60 @@ $(document).ready(function(){
       '<label for="exampleFormControlTextarea1">Write down what happened:</label>' +
       '<textarea class="form-control" id="comment" rows="5"></textarea>' +
     '</div></form>');
-    
-    
-    var userId;
+
+    $("#confirm-btn").attr("id", "submit-btn");
+
+
+    $("#submit-btn").click((e)=>{
+        
+        var userId;
 
         $.get("/api/user_data").then((data) => {
-            userId = data.id
+            userId = data.id;
         });
 
-        var id = $(e.target).attr("data-id");
-        var name = $(e.target).attr("data-name");
-        var emoji = $(e.target).text();
-        var polarity = $(e.target).attr("data-polarity");
+         id = $(e.target).attr("data-id");
+         name = $(e.target).attr("data-name");
+         emoji = $(e.target).text();
+         polarity = $(e.target).attr("data-polarity");
+        console.log(id)
 
-        var emojiInfo = {
+         emojiInfo = {
             userId : userId,
                 id : id,
-              name : name,
-             emoji : emoji,
-          polarity : polarity
+            name : name,
+            emoji : emoji,
+        polarity : polarity
         }
-
         $.ajax({
             type: "GET",
             data: emojiInfo
         }).then(() => {
+                // console.log(data)
                 console.log(userId, name, emoji, id, polarity);
                 $('.modal').show();
                 $('p').text(emoji);
 
-                $.post("/api/useremojis", {
+                var userEmoji = {
                     user_id  : userId,
                     emoji_id : id,
                     user_comment: "Hi, how are you?"
-                },
-                function(data, status){
-                    console.log("DATA:" + data + "\nSTATUS: " + status);
                 }
-                )
+                $.ajax({
+                    type: "POST",
+                    url: "/api/useremojis",
+                    data: userEmoji
+                }).then(
+                    function(data, status){
+                        console.log("DATA:" + data + "\nSTATUS: " + status);
+                    }
+                  );
+            
             }
         );
     });
 
-  
+  });
 
-  
-  
-
+    
 });
