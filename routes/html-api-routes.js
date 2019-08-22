@@ -13,7 +13,7 @@ module.exports = function(app){
       if (req.user) {
         res.redirect("/members");
       }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
 
@@ -48,7 +48,7 @@ function findAllEmojis(){
     }).then(function(dbemoji) {
       var sortedEmotion = dbemoji.sort(function(a, b){
         return a.polarity-b.polarity
-    });
+    })
 
 
     var positivePolarity = [];
@@ -77,7 +77,7 @@ function findAllEmojis(){
       
     });
 });
-
+}
 findAllEmojis();
 
 function findUserEmoji(){
@@ -97,10 +97,12 @@ function findUserEmoji(){
             // negativePolarityEmojis: negativePolarity,
             // title: "Emotion Tracker"
         };
-        
-    
-findUserEmoji(); //end of module.exports
-
+        res.render("index", data);
+      });//end of module.exports
+  });
+}
+findUserEmoji(); 
+};
 
 
 
