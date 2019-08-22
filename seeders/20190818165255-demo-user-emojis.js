@@ -45,7 +45,7 @@ module.exports = {
       },
       {
         user_id: 1,
-        emoji_id: 30,
+        emoji_id: 101,
         updatedAt: '2019-08-25 23:24:46',
       },
       {

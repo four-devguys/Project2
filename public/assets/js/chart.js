@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
       $.get("/api/user_data", function(user) {
-
-        console.log(user);
+        var currentUser = (user.username.substr(0, user.username.indexOf("@"))
+        .toUpperCase());
 
         var emotionChart = myChart.data.datasets[0];
 
-        emotionChart.label = 'Levels of daily emotions: ' + user.username;
+        emotionChart.label = 'Levels of daily emotions: ' + currentUser;
 
         emotionChart.data[0] = 0;
         emotionChart.data[1] = 0;
@@ -19,8 +19,8 @@ $(document).ready(function(){
         user.umoji.forEach(function(user_emoji) {
             var updated_date = new Date(user_emoji.user_emojis.updatedAt);
             emotionChart.data[updated_date.getDay()] = user_emoji.polarity;
-            emotionChart.backgroundColor[updated_date.getDay()] = 'rgba(255, 99, 132, 0.2)';
-            emotionChart.borderColor[updated_date.getDay()] = 'rgba(255, 99, 132, 0.2)';
+            // emotionChart.backgroundColor[updated_date.getDay()] = 'rgba(255, 99, 132, 0.2)';
+            // emotionChart.borderColor[updated_date.getDay()] = 'rgba(255, 99, 132, 0.2)';
         });
         myChart.update();
       });
@@ -59,7 +59,7 @@ var myChart = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: false
                 }
             }]
         }
