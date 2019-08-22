@@ -20,7 +20,7 @@
     </div>
   </nav>
 <div class="container page-container">
-    
+
     <!-- front window container -->
     <div class="container front-window">
       <h1>Choose the best that describes your feeling right now:</h1>
@@ -34,7 +34,7 @@
       <button type="button" class="btn btn-outline-primary" id="sad-btn">Sad</button>
     </div>
 
-     
+
 
     <!-- emojis container -->
     <div class="container" id="happy-emoji-container">
@@ -47,12 +47,12 @@
           {{!-- <ul> --}}
           {{#each positivePolarityEmojis}}
             {{!-- <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
-              <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
+              <span class="emoji-info" data-id={{id}} data-name={{name}} data-polarity={{polarity}}>{{emoji}}</span>
                {{!-- {{name}} {{polarity}} --}}
             {{!-- </li> --}}
           {{/each}}
           {{!-- </ul> --}}
-{{!-- 
+{{!--
         </div>
       </div> --}}
     </div>
@@ -67,7 +67,7 @@
 
       {{#each neutralPolarityEmojis}}
         {{!-- <button class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
-          <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
+          <span class="emoji-info" data-id={{id}} data-name={{name}} data-polarity={{polarity}}>{{emoji}}</span>
           {{!-- {{name}} {{polarity}}  --}}
         {{!-- </button> --}}
       {{/each}}
@@ -76,7 +76,7 @@
     {{!-- </div> --}}
   </div>
 
-  
+
   <div class="container" id="sad-emoji-container">
     <button class="x-button"><i class="fas fa-times"></i></button><br>
     {{!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -86,9 +86,9 @@
       <ul> --}}
       {{#each negativePolarityEmojis}}
         {{!-- <li class="dropdown-item emoji-size" data-toggle="modal" data-target="#myModal"> --}}
-          <span class="emoji-info" data-id="{{id}}" data-name={{name}}>{{emoji}}</span>
+          <span class="emoji-info" data-id={{id}} data-name={{name}} data-polarity={{polarity}}>{{emoji}}</span>
           {{!-- {{name}} {{polarity}}  --}}
-        {{!-- </li> --}}  
+        {{!-- </li> --}}
       {{/each}}
       {{!-- </ul>
 
@@ -143,5 +143,3 @@
       </div>
     </div>
   </div> --}}
-
-  

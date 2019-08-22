@@ -75,10 +75,21 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the user's username and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        username: req.user.username,
-        id: req.user.id
+      db.users.findOne({
+        where: {
+          id: req.user.id
+        },
+        include: [{
+          model: db.emojis,
+          as: 'umoji'
+        }]
+      }).then(function(dbusers) {
+        res.json(dbusers);
       });
+      // res.json({
+      //   username: req.user.username,
+      //   id: req.user.id
+      // });
     }
   });
 

@@ -28,14 +28,14 @@ module.exports = function(app){
     res.sendFile(path.join(__dirname, "../public/members.html"))
   });
 
-  app.get("/chart", function(req, res){
+  app.get("/chart",isAuthenticated, function(req, res){
     res.sendFile(path.join(__dirname, "../public/chart.html"))
   })
 
 
   function findAllEmojis(){
     // GET route for getting all of the emojis
-    app.get("/mood-track", function(req, res) {
+    app.get("/mood-track",isAuthenticated, function(req, res) {
       var query = {};
     if (req.query.id) {
       query.id = req.query.id;
@@ -51,7 +51,6 @@ module.exports = function(app){
     var positivePolarity = [];
     var neutralPolarity =[];
     var negativePolarity = [];
-
 
     for(var i = 0; i < sortedEmotion.length; i++){
         var emojiPolarity = sortedEmotion[i].polarity;
@@ -78,7 +77,7 @@ module.exports = function(app){
 
     console.log();
     function findUserEmoji(){
-      app.get("/mood-track", function(req, res) {
+      app.get("/mood-track", isAuthenticated,function(req, res) {
 
         db.users.findAll({
           include: [{
@@ -89,9 +88,6 @@ module.exports = function(app){
 
           var data = {
              Emojis: dbusers,
-            // neutralPolarityEmojis: neutralPolarity,
-            // negativePolarityEmojis: negativePolarity,
-            // title: "Emotion Tracker"
 
         };
           res.render("index", data);
