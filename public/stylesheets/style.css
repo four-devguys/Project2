@@ -118,9 +118,13 @@ h4{
   background-color: #FFFFFF;
   color: #102542;
   text-shadow: 0 0 2px #102542;
+
+}
+
 }
 @media screen and (max-width: 600px) {
 .start-btn{
     width: 50%;
   }
 }
+

@@ -12,7 +12,11 @@ module.exports = function(app){
     // If the user already has an account send them to the members page
       if (req.user) {
         res.redirect("/members");
+
+      }
+
       } 
+
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
@@ -26,29 +30,47 @@ module.exports = function(app){
 
   app.get("/members", isAuthenticated, function(req, res){
     res.sendFile(path.join(__dirname, "../public/members.html"))
+
+  });
+
+  app.get("/chart",isAuthenticated, function(req, res){
+    res.sendFile(path.join(__dirname, "../public/chart.html"))
+
   })
 
 
   function findAllEmojis(){
     // GET route for getting all of the emojis
+
+    app.get("/mood-track",isAuthenticated, function(req, res) {
+
     app.get("/mood-track", function(req, res) {
+
       var query = {};
     if (req.query.id) {
       query.id = req.query.id;
     }
-    
+
     db.emojis.findAll({
       where: query,
     }).then(function(dbemoji) {
       var sortedEmotion = dbemoji.sort(function(a, b){
         return a.polarity-b.polarity
     })
+
+
+    var positivePolarity = [];
+    var neutralPolarity =[];
+    var negativePolarity = [];
+
+
     
     var positivePolarity = [];
     var neutralPolarity =[];
     var negativePolarity = [];
     
     
+
     for(var i = 0; i < sortedEmotion.length; i++){
         var emojiPolarity = sortedEmotion[i].polarity;
         if(emojiPolarity > 0){
@@ -65,12 +87,17 @@ module.exports = function(app){
         negativePolarityEmojis: negativePolarity,
         title: "Emotion Tracker"
     };
-    
+
       res.render("index",data)
       });
     });
     }
     findAllEmojis();
+
+    console.log();
+    function findUserEmoji(){
+      app.get("/mood-track", isAuthenticated,function(req, res) {
+
     
     console.log();
     function findUserEmoji(){
@@ -82,7 +109,11 @@ module.exports = function(app){
             as: 'umoji'
           }]
         }).then(function(dbusers) {
-    
+
+
+          var data = {
+             Emojis: dbusers,
+
           var data = {
              Emojis: dbusers,
             // neutralPolarityEmojis: neutralPolarity,
@@ -97,10 +128,6 @@ module.exports = function(app){
       findUserEmoji()
 
 }; //end of module.exports
-
-
-
-
 
 
 
@@ -239,7 +266,11 @@ module.exports = function(app){
 //     // If the user already has an account send them to the members page
 //     if (req.user) {
 //       res.redirect("/members");
+
+//     }
+
 //     }    
+
 //     res.sendFile(path.join(__dirname, "../public/signup.html"));
 //   });
 
@@ -279,6 +310,7 @@ module.exports = function(app){
 // //   var negativePolarity = [];
 
 
+
 // //   for(var i = 0; i < sortedEmotion.length; i++){
 // //       var emojiPolarity = sortedEmotion[i].polarity;
 // //       if(emojiPolarity > 0){
@@ -301,3 +333,23 @@ module.exports = function(app){
 // // });
 
 
+// //   for(var i = 0; i < sortedEmotion.length; i++){
+// //       var emojiPolarity = sortedEmotion[i].polarity;
+// //       if(emojiPolarity > 0){
+// //           positivePolarity.push(dbemoji[i]);
+// //       }else if(emojiPolarity == 0){
+// //           neutralPolarity.push(dbemoji[i]);
+// //       }else{
+// //           negativePolarity.push(dbemoji[i]);
+// //       }
+// //   }
+// //   var data = {
+// //       positivePolarityEmojis: positivePolarity,
+// //       neutralPolarityEmojis: neutralPolarity,
+// //       negativePolarityEmojis: negativePolarity,
+// //       title: "Emotion Tracker"
+// //   };
+
+// //     res.render("index",data)
+// //   });
+// // });

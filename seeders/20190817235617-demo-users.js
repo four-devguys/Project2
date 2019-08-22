@@ -14,25 +14,25 @@ module.exports = {
     */
    return queryInterface.bulkInsert('users', [{
       username: 'raj@gmail.com',
-      password: 'asdf',
+      password: '$2a$10$RbFvoj6nRl2yr0DRC8gV.e.WhkXpWkq1psUrqZ3gWY322uacNLxCy',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       username: 'hally@gmail.com',
-      password: 'asdf',
+      password: '$2a$10$RbFvoj6nRl2yr0DRC8gV.e.WhkXpWkq1psUrqZ3gWY322uacNLxCy',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       username: 'tj@gmail.com',
-      password: 'asdf',
+      password: '$2a$10$RbFvoj6nRl2yr0DRC8gV.e.WhkXpWkq1psUrqZ3gWY322uacNLxCy',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       username: 'mohammed@gmail.com',
-      password: 'asdf',
+      password: '$2a$10$RbFvoj6nRl2yr0DRC8gV.e.WhkXpWkq1psUrqZ3gWY322uacNLxCy',
       createdAt: new Date(),
       updatedAt: new Date()
     }

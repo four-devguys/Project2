@@ -19,3 +19,6 @@ npx sequelize-cli db:migrate:undo:all
 -- Seed db
 npx sequelize-cli db:seed:all
 npx sequelize-cli db:seed --seed 20190818165255-demo-user-emojis.js
+
+-- undo seeding
+npx sequelize-cli db:seed:undo:all

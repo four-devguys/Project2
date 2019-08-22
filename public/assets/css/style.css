@@ -10,10 +10,14 @@ html, body{
 }
 h4{
     margin-right: 2%;
+
+  }
+
 }
 h5{
     text-align: center;
 }
+
 .page-container{
     position: absolute;
     top: 50%;
@@ -27,11 +31,49 @@ h5{
     display: inline-block;
     /* background-color: red; */
     text-align: center;
+
     margin-top: 50px;
+
 }
 .front-window button{
     /* display: inline-flex; */
     margin: 10px 1.5%;
+
+    width: 15%;
+}
+#happy-emoji-container, #neutral-emoji-container, #sad-emoji-container{
+    height: 50vh;
+    width: 100%;
+    display: none;
+    margin-top: 5%;
+    border-top: 2px solid #102542; 
+    /* background-color: #6DD5FA; */
+}
+#happy-emoji-container span, #neutral-emoji-container span,  #sad-emoji-container span{
+    font-size: 2em;
+}
+.x-button{
+    border: none;
+    padding: 15px; 
+    font-size: 18pt;
+    border-radius: 50px;
+    color: #102542;
+    display: block;
+    margin-left: auto;
+    background-color: transparent;
+    outline: none !important;
+    box-shadow: none;
+}
+.x-button:hover{
+    text-shadow: 0px 0px 5px #A1CDF1;
+}
+
+/* modal styles */
+#emoji-icon{
+    font-size: 3em;
+    text-align: center;
+}
+
     /* width: 15%; */
 }
 #happy-emoji-container, #neutral-emoji-container, #sad-emoji-container{
@@ -85,6 +127,7 @@ h5{
     background-color: #AAE7FC;
     border-radius: 50%;
 }
+
 
 
 
