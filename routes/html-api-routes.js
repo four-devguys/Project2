@@ -13,20 +13,18 @@ module.exports = function(app){
       if (req.user) {
         res.redirect("/members");
       }
-<<<<<<< HEAD
-      res.sendFile(path.join(__dirname, "../public/signup.html"));
-      });
-=======
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
->>>>>>> 8c303cf68e694713ddc3bd1b4e26db39084baf77
 
-  app.get("/login", function(req, res){
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+      });
+
+
+
+  app.get("/signup", function(req, res){
     // If the user already has an account send them to the members page
       if (req.user) {
         res.redirect("/members");
       }
-    res.sendFile(path.join(__dirname, "../public/login.html"))
+    res.sendFile(path.join(__dirname, "../public/signup.html"))
   });
 
   app.get("/members", isAuthenticated, function(req, res){
@@ -40,17 +38,9 @@ module.exports = function(app){
 
 function findAllEmojis(){
     // GET route for getting all of the emojis
-<<<<<<< HEAD
 
-    app.get("/mood-track",isAuthenticated, function(req, res) {
-
-    
-
-      var query = {};
-=======
   app.get("/mood-track",isAuthenticated, function(req, res) {
     var query = {};
->>>>>>> 8c303cf68e694713ddc3bd1b4e26db39084baf77
     if (req.query.id) {
       query.id = req.query.id;
     }
@@ -66,11 +56,8 @@ function findAllEmojis(){
     var positivePolarity = [];
     var neutralPolarity =[];
     var negativePolarity = [];
-<<<<<<< HEAD
 
-=======
->>>>>>> 8c303cf68e694713ddc3bd1b4e26db39084baf77
-    
+
 
     for(var i = 0; i < sortedEmotion.length; i++){
         var emojiPolarity = sortedEmotion[i].polarity;
@@ -90,9 +77,8 @@ function findAllEmojis(){
     };
 
       res.render("index",data)
-      });
+      
     });
-<<<<<<< HEAD
   };
     findAllEmojis();
 
@@ -112,49 +98,19 @@ function findAllEmojis(){
 
           var data = {
              Emojis: dbusers,
-=======
+
 }
-
-findAllEmojis();
-
-function findUserEmoji(){
-  app.get("/mood-track", isAuthenticated,function(req, res) {
-    // function findUserEmoji(){
-    //   app.get("/mood-track", function(req, res) {
-    
-    db.users.findAll({
-      include: [{
-        model: db.emojis,
-        as: 'umoji'
-      }]
-    }).then(function(dbusers) {
-        var data = {
-          Emojis: dbusers,
->>>>>>> 8c303cf68e694713ddc3bd1b4e26db39084baf77
-            // neutralPolarityEmojis: neutralPolarity,
-            // negativePolarityEmojis: negativePolarity,
-            // title: "Emotion Tracker"
-        };
-<<<<<<< HEAD
-          res.render("index", data);
         });
-      });
-    };
-    findUserEmoji();
-
- //end of module.exports
-
-=======
-        
         res.render("index", data);
       });
-    });
-}
-    
-findUserEmoji(); //end of module.exports
->>>>>>> 8c303cf68e694713ddc3bd1b4e26db39084baf77
+    };
+     findUserEmoji(); //end of module.exports
 
-};
+
+
+        
+    
+
 
 
 
