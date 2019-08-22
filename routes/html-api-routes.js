@@ -13,14 +13,8 @@ module.exports = function(app){
       if (req.user) {
         res.redirect("/members");
       }
-<<<<<<< HEAD
-
-      res.sendFile(path.join(__dirname, "../public/login.html"));
-      });
-=======
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
->>>>>>> 4d322bf6ee786d9c61c59810cf169c2801680709
 
 
 
@@ -43,10 +37,6 @@ module.exports = function(app){
 
 function findAllEmojis(){
     // GET route for getting all of the emojis
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d322bf6ee786d9c61c59810cf169c2801680709
   app.get("/mood-track",isAuthenticated, function(req, res) {
     var query = {};
     if (req.query.id) {
@@ -64,12 +54,7 @@ function findAllEmojis(){
     var positivePolarity = [];
     var neutralPolarity =[];
     var negativePolarity = [];
-<<<<<<< HEAD
 
-
-=======
-    
->>>>>>> 4d322bf6ee786d9c61c59810cf169c2801680709
 
     for(var i = 0; i < sortedEmotion.length; i++){
         var emojiPolarity = sortedEmotion[i].polarity;
@@ -91,38 +76,7 @@ function findAllEmojis(){
       res.render("index",data)
       
     });
-<<<<<<< HEAD
-  };
-    findAllEmojis();
-
-    console.log();
-    function findUserEmoji(){
-      app.get("/mood-track", isAuthenticated,function(req, res) {
-    
-        db.users.findAll({
-          include: [{
-            model: db.emojis,
-            as: 'umoji'
-          }]
-        }).then(function(dbusers) {
-
-
-          
-
-          var data = {
-             Emojis: dbusers,
-
-}
-        });
-        res.render("index", data);
-      });
-    };
-     findUserEmoji(); //end of module.exports
-
-
-
-=======
-}
+});
 
 findAllEmojis();
 
@@ -143,13 +97,9 @@ function findUserEmoji(){
             // negativePolarityEmojis: negativePolarity,
             // title: "Emotion Tracker"
         };
->>>>>>> 4d322bf6ee786d9c61c59810cf169c2801680709
         
     
-<<<<<<< HEAD
-=======
 findUserEmoji(); //end of module.exports
->>>>>>> 4d322bf6ee786d9c61c59810cf169c2801680709
 
 
 
