@@ -97,20 +97,17 @@ $(document).ready(function(){
   $('.modal').fadeOut(600);
   });
 
+  
+  $('#textarea').hide();
   $('#confirm-btn').click(() => {
     $('#close-btn').hide();
     $('.modal-title').text("You just clicked " + emoji);
-    $('.modal-body').html('<form>' +
-    '<div class="form-group">' + 
-      '<label for="exampleFormControlTextarea1">Write down what happened:</label>' +
-      '<textarea class="form-control" id="comment" rows="5"></textarea>' +
-    '</div></form>');
-
     $("#confirm-btn").attr("id", "submit-btn");
+    
+    $('#textarea').show();
 
-
+    $("#emoji-icon").hide();
     $("#submit-btn").click((e)=>{
-        
         var userId;
 
         $.get("/api/user_data").then((data) => {
@@ -139,7 +136,7 @@ $(document).ready(function(){
                 var userEmoji = {
                     user_id  : userId,
                     emoji_id : id,
-                    user_comment: "Hi, how are you?"
+                    user_comment: $("#comment").val()
                 }
                 $.ajax({
                     type: "POST",
