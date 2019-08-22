@@ -117,9 +117,6 @@ $(document).ready(function(){
             userId = data.id;
         });
 
-         id = $(e.target).attr("data-id");
-         name = $(e.target).attr("data-name");
-         emoji = $(e.target).text();
          polarity = $(e.target).attr("data-polarity");
         console.log(id)
 
@@ -138,7 +135,7 @@ $(document).ready(function(){
                 console.log(userId, name, emoji, id, polarity);
                 $('.modal').show();
                 $('p').text(emoji);
-
+                console.log(id);
                 var userEmoji = {
                     user_id  : userId,
                     emoji_id : id,
@@ -149,8 +146,8 @@ $(document).ready(function(){
                     url: "/api/useremojis",
                     data: userEmoji
                 }).then(
-                    function(data, status){
-                        console.log("DATA:" + data + "\nSTATUS: " + status);
+                    function(){
+                        location.reload();
                     }
                   );
             

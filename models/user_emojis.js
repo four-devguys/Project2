@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: {
         model: 'emojis',
-        key: 'id'
+        key: 'emoji'
       }
     },
     user_comment: {
