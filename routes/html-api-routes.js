@@ -12,7 +12,7 @@ module.exports = function(app){
     // If the user already has an account send them to the members page
       if (req.user) {
         res.redirect("/members");
-      }
+      } 
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
@@ -26,34 +26,29 @@ module.exports = function(app){
 
   app.get("/members", isAuthenticated, function(req, res){
     res.sendFile(path.join(__dirname, "../public/members.html"))
-  });
-
-  app.get("/chart",isAuthenticated, function(req, res){
-    res.sendFile(path.join(__dirname, "../public/chart.html"))
-  });
+  })
 
 
-function findAllEmojis(){
+  function findAllEmojis(){
     // GET route for getting all of the emojis
-  app.get("/mood-track",isAuthenticated, function(req, res) {
-    var query = {};
+    app.get("/mood-track", function(req, res) {
+      var query = {};
     if (req.query.id) {
       query.id = req.query.id;
     }
-
+    
     db.emojis.findAll({
       where: query,
     }).then(function(dbemoji) {
       var sortedEmotion = dbemoji.sort(function(a, b){
         return a.polarity-b.polarity
-    });
-
-
+    })
+    
     var positivePolarity = [];
     var neutralPolarity =[];
     var negativePolarity = [];
     
-
+    
     for(var i = 0; i < sortedEmotion.length; i++){
         var emojiPolarity = sortedEmotion[i].polarity;
         if(emojiPolarity > 0){
@@ -70,40 +65,44 @@ function findAllEmojis(){
         negativePolarityEmojis: negativePolarity,
         title: "Emotion Tracker"
     };
-
+    
       res.render("index",data)
       });
     });
-}
-
-findAllEmojis();
-
-function findUserEmoji(){
-  app.get("/mood-track", isAuthenticated,function(req, res) {
-    // function findUserEmoji(){
-    //   app.get("/mood-track", function(req, res) {
+    }
+    findAllEmojis();
     
-    db.users.findAll({
-      include: [{
-        model: db.emojis,
-        as: 'umoji'
-      }]
-    }).then(function(dbusers) {
-        var data = {
-          Emojis: dbusers,
+    console.log();
+    function findUserEmoji(){
+      app.get("/mood-track", function(req, res) {
+    
+        db.users.findAll({
+          include: [{
+            model: db.emojis,
+            as: 'umoji'
+          }]
+        }).then(function(dbusers) {
+    
+          var data = {
+             Emojis: dbusers,
             // neutralPolarityEmojis: neutralPolarity,
             // negativePolarityEmojis: negativePolarity,
             // title: "Emotion Tracker"
-        };
-        
-        res.render("index", data);
-      });
-    });
-}
     
-findUserEmoji(); //end of module.exports
+        };
+          res.render("index", data);
+        });
+        });
+      }
+      findUserEmoji()
 
-};
+}; //end of module.exports
+
+
+
+
+
+
 
 
 
@@ -240,11 +239,7 @@ findUserEmoji(); //end of module.exports
 //     // If the user already has an account send them to the members page
 //     if (req.user) {
 //       res.redirect("/members");
-
-//     }
-
 //     }    
-
 //     res.sendFile(path.join(__dirname, "../public/signup.html"));
 //   });
 
@@ -284,7 +279,6 @@ findUserEmoji(); //end of module.exports
 // //   var negativePolarity = [];
 
 
-
 // //   for(var i = 0; i < sortedEmotion.length; i++){
 // //       var emojiPolarity = sortedEmotion[i].polarity;
 // //       if(emojiPolarity > 0){
@@ -307,23 +301,3 @@ findUserEmoji(); //end of module.exports
 // // });
 
 
-// //   for(var i = 0; i < sortedEmotion.length; i++){
-// //       var emojiPolarity = sortedEmotion[i].polarity;
-// //       if(emojiPolarity > 0){
-// //           positivePolarity.push(dbemoji[i]);
-// //       }else if(emojiPolarity == 0){
-// //           neutralPolarity.push(dbemoji[i]);
-// //       }else{
-// //           negativePolarity.push(dbemoji[i]);
-// //       }
-// //   }
-// //   var data = {
-// //       positivePolarityEmojis: positivePolarity,
-// //       neutralPolarityEmojis: neutralPolarity,
-// //       negativePolarityEmojis: negativePolarity,
-// //       title: "Emotion Tracker"
-// //   };
-
-// //     res.render("index",data)
-// //   });
-// // });
