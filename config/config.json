@@ -1,6 +1,5 @@
 {
   "development": {
-    "use_env_variable":"mysql://n9rtphyhuq6k2wbi:h2w3tethy4w09103@ou6zjjcqbi307lip.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/bj19n93ebt4assj8",
     "username": "root",
     "password": "Aladdin1991!!",
     "database": "db_emotions",
@@ -9,7 +8,6 @@
     "operatorsAliases": false
   },
   "test": {
-    "use_env_variable":"mysql://n9rtphyhuq6k2wbi:h2w3tethy4w09103@ou6zjjcqbi307lip.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/bj19n93ebt4assj8",
     "username": "root",
     "password": "Aladdin1991!!",
     "database": "database_test",
@@ -18,7 +16,6 @@
     "operatorsAliases": false
   },
   "production": {
-    "use_env_variable":"mysql://n9rtphyhuq6k2wbi:h2w3tethy4w09103@ou6zjjcqbi307lip.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/bj19n93ebt4assj8",
     "username": "n9rtphyhuq6k2wbi",
     "password": "h2w3tethy4w09103",
     "database": "bj19n93ebt4assj8",
